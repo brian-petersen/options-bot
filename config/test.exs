@@ -1,4 +1,8 @@
-use Mix.Config
+import Config
+
+config :options_bot,
+  tda_client_id: "client_id",
+  tda_refresh_token: "refresh_token"
 
 # Configure your database
 #
@@ -20,3 +24,6 @@ config :options_bot, OptionsBotWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Other
+config :tesla, adapter: TeslaMock

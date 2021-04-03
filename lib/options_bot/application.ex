@@ -7,16 +7,11 @@ defmodule OptionsBot.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
       OptionsBot.Repo,
-      # Start the Telemetry supervisor
       OptionsBotWeb.Telemetry,
-      # Start the PubSub system
       {Phoenix.PubSub, name: OptionsBot.PubSub},
-      # Start the Endpoint (http/https)
-      OptionsBotWeb.Endpoint
-      # Start a worker by calling: OptionsBot.Worker.start_link(arg)
-      # {OptionsBot.Worker, arg}
+      OptionsBotWeb.Endpoint,
+      OptionsBot.TDA.TokenServer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

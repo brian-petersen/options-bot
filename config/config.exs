@@ -5,7 +5,13 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
+
+config :options_bot, :env, config_env()
+
+config :options_bot,
+  tda_client_id: {:system, "TDA_CLIENT_ID"},
+  tda_refresh_token: {:system, "TDA_REFRESH_TOKEN"}
 
 config :options_bot,
   ecto_repos: [OptionsBot.Repo]
@@ -26,6 +32,9 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Other
+config :tesla, :adapter, Tesla.Adapter.Hackney
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env()}.exs"
+import_config "#{config_env()}.exs"

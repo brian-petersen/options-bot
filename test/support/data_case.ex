@@ -23,7 +23,11 @@ defmodule OptionsBot.DataCase do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+      import Mox
       import OptionsBot.DataCase
+      import Tesla.Mock, only: [json: 1, json: 2]
+
+      setup :verify_on_exit!
     end
   end
 
